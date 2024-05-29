@@ -39,9 +39,9 @@ This is the challenge for the second round of our front-end developer recruitmen
 
 ## Useful Resources
 
-- [Lexical Documentation](https://lexical.dev/docs/)
-- [React Documentation](https://reactjs.org/docs/getting-started.html)
-- [Next.js Documentation](https://nextjs.org/docs/getting-started)
+- [Lexical Documentation](https://lexical.dev/docs/intro)
+- [React Documentation](https://react.dev/blog/2023/03/16/introducing-react-dev)
+- [Next.js Documentation](https://nextjs.org/docs)
 - [Typescript Documentation](https://www.typescriptlang.org/docs/)
 
 ## Example Images
