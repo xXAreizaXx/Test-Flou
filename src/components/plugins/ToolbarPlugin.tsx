@@ -43,6 +43,7 @@ import {
   getDefaultCodeLanguage,
   getCodeLanguages,
 } from '@lexical/code';
+import RedLineButton from '@plugins/RedLineButton';
 
 const LowPriority = 1;
 
@@ -446,22 +447,26 @@ function BlockOptionsDropdownList({
 }
 
 const ToolbarPlugin = () => {
+  // Lexical
   const [editor] = useLexicalComposerContext();
+
+  // Refs
   const toolbarRef = useRef(null);
-  const [canUndo, setCanUndo] = useState(false);
-  const [canRedo, setCanRedo] = useState(false);
+
+  // States
   const [blockType, setBlockType] = useState('paragraph');
-  const [selectedElementKey, setSelectedElementKey] = useState(null);
-  const [showBlockOptionsDropDown, setShowBlockOptionsDropDown] =
-    useState(false);
+  const [canRedo, setCanRedo] = useState(false);
+  const [canUndo, setCanUndo] = useState(false);
   const [codeLanguage, setCodeLanguage] = useState('');
-  const [isRTL, setIsRTL] = useState(false);
-  const [isLink, setIsLink] = useState(false);
   const [isBold, setIsBold] = useState(false);
-  const [isItalic, setIsItalic] = useState(false);
-  const [isUnderline, setIsUnderline] = useState(false);
-  const [isStrikethrough, setIsStrikethrough] = useState(false);
   const [isCode, setIsCode] = useState(false);
+  const [isItalic, setIsItalic] = useState(false);
+  const [isLink, setIsLink] = useState(false);
+  const [isRTL, setIsRTL] = useState(false);
+  const [isStrikethrough, setIsStrikethrough] = useState(false);
+  const [isUnderline, setIsUnderline] = useState(false);
+  const [selectedElementKey, setSelectedElementKey] = useState(null);
+  const [showBlockOptionsDropDown, setShowBlockOptionsDropDown] = useState(false);
 
   const updateToolbar = useCallback(() => {
     const selection = $getSelection();
@@ -543,6 +548,7 @@ const ToolbarPlugin = () => {
   }, [editor, updateToolbar]);
 
   const codeLanguges = useMemo(() => getCodeLanguages(), []);
+
   const onCodeLanguageSelect = useCallback(
     (e: { target: { value: string } }) => {
       editor.update(() => {
@@ -671,6 +677,7 @@ const ToolbarPlugin = () => {
             aria-label='Insert Link'>
             <i className='format link' />
           </button>
+          <RedLineButton />
           {isLink &&
             createPortal(<FloatingLinkEditor editor={editor} />, document.body)}
           <Divider />
@@ -705,9 +712,10 @@ const ToolbarPlugin = () => {
             className='toolbar-item'
             aria-label='Justify Align'>
             <i className='format justify-align' />
-          </button>{' '}
+          </button>
         </>
       )}
+      
     </div>
   );
 };

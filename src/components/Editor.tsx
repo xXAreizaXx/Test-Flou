@@ -1,27 +1,33 @@
 'use client';
 
-import ExampleTheme from './themes/ExampleTheme';
-import { LexicalComposer } from '@lexical/react/LexicalComposer';
-import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
-import { ContentEditable } from '@lexical/react/LexicalContentEditable';
-import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
+// Lexical
 import { AutoFocusPlugin } from '@lexical/react/LexicalAutoFocusPlugin';
-import TreeViewPlugin from './plugins/TreeViewPlugin';
-import ToolbarPlugin from './plugins/ToolbarPlugin';
-import { HeadingNode, QuoteNode } from '@lexical/rich-text';
-import { TableCellNode, TableNode, TableRowNode } from '@lexical/table';
-import { ListItemNode, ListNode } from '@lexical/list';
-import { CodeHighlightNode, CodeNode } from '@lexical/code';
 import { AutoLinkNode, LinkNode } from '@lexical/link';
+import { CodeHighlightNode, CodeNode } from '@lexical/code';
+import { ContentEditable } from '@lexical/react/LexicalContentEditable';
+import { HeadingNode, QuoteNode } from '@lexical/rich-text';
+import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
+import { LexicalComposer } from '@lexical/react/LexicalComposer';
 import { LinkPlugin } from '@lexical/react/LexicalLinkPlugin';
+import { ListItemNode, ListNode } from '@lexical/list';
 import { ListPlugin } from '@lexical/react/LexicalListPlugin';
 import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
+import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
+import { TableCellNode, TableNode, TableRowNode } from '@lexical/table';
 import { TRANSFORMERS } from '@lexical/markdown';
-
-import ListMaxIndentLevelPlugin from './plugins/ListMaxIndentLevelPlugin';
-import CodeHighlightPlugin from './plugins/CodeHighlightPlugin';
-import AutoLinkPlugin from './plugins/AutoLinkPlugin';
 import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
+
+// Plugins
+import { RedLineNode } from '@plugins/RedLineNode';
+import AutoLinkPlugin from '@plugins/AutoLinkPlugin';
+import CodeHighlightPlugin from '@plugins/CodeHighlightPlugin';
+import ListMaxIndentLevelPlugin from '@plugins/ListMaxIndentLevelPlugin';
+import RedLinePlugin from '@plugins/RedLinePlugin';
+import ToolbarPlugin from '@plugins/ToolbarPlugin';
+import TreeViewPlugin from '@plugins/TreeViewPlugin';
+
+// Themes
+import ExampleTheme from '@themes/ExampleTheme';
 
 function Placeholder() {
   return <div className='editor-placeholder'>Enter some rich text...</div>;
@@ -34,17 +40,18 @@ const editorConfig = {
     throw error;
   },
   nodes: [
-    HeadingNode,
-    ListNode,
-    ListItemNode,
-    QuoteNode,
-    CodeNode,
-    CodeHighlightNode,
-    TableNode,
-    TableCellNode,
-    TableRowNode,
     AutoLinkNode,
+    CodeHighlightNode,
+    CodeNode,
+    HeadingNode,
     LinkNode,
+    ListItemNode,
+    ListNode,
+    QuoteNode,
+    RedLineNode,
+    TableCellNode,
+    TableNode,
+    TableRowNode,
   ],
 };
 
@@ -68,6 +75,7 @@ const Editor = () => {
           <AutoLinkPlugin />
           <ListMaxIndentLevelPlugin maxDepth={7} />
           <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
+          <RedLinePlugin />
         </div>
       </div>
     </LexicalComposer>

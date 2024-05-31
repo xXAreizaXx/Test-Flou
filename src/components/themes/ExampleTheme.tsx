@@ -4,6 +4,9 @@ const exampleTheme = {
   placeholder: 'editor-placeholder',
   paragraph: 'editor-paragraph',
   quote: 'editor-quote',
+  redLine: {
+    textDecoration: 'underline red wavy',
+  },
   heading: {
     h1: 'editor-heading-h1',
     h2: 'editor-heading-h2',
@@ -23,13 +26,14 @@ const exampleTheme = {
   link: 'editor-link',
   text: {
     bold: 'editor-text-bold',
+    code: 'editor-text-code',
+    hashtag: 'editor-text-hashtag',
     italic: 'editor-text-italic',
     overflowed: 'editor-text-overflowed',
-    hashtag: 'editor-text-hashtag',
-    underline: 'editor-text-underline',
+    redline: 'text-redline',
     strikethrough: 'editor-text-strikethrough',
+    underline: 'editor-text-underline',
     underlineStrikethrough: 'editor-text-underlineStrikethrough',
-    code: 'editor-text-code',
   },
   code: 'editor-code',
   codeHighlight: {
