@@ -6,7 +6,7 @@ import { $getSelection, $isRangeSelection, createCommand, $getNodeByKey, TextNod
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 
 // Components
-import Modal from '@components/Modal';
+import RedLineModal from '@components/RedLineModal';
 
 // Plugin
 import { $createRedLineNode } from '@plugins/RedLineNode';
@@ -100,7 +100,7 @@ export default function RedLinePlugin() {
   };
 
   return isModalOpen &&
-    <Modal
+    <RedLineModal
       onApprove={handleApprove}
       onCancel={handleCancel}
       position={modalPosition}

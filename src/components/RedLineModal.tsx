@@ -2,14 +2,14 @@
 import { useState } from 'react';
 
 // Interface
-interface ModalProps {
+interface RedLineModalProps {
   onApprove: (suggestedText: string) => void;
   onCancel: () => void;
   position: { top: number, left: number };
   text: string;
 }
 
-export default function Modal({ onApprove, onCancel, position, text }: ModalProps) {
+export default function RedLineModal({ onApprove, onCancel, position, text }: RedLineModalProps) {
   // State
   const [suggestedText, setSuggestedText] = useState(text);
 
